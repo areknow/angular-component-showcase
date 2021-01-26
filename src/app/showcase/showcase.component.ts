@@ -1,7 +1,25 @@
-import { Component } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  Input,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 
 @Component({
   selector: 'app-showcase',
-  template: `<div #content><ng-content></ng-content></div>`,
+  template: `<ng-container #component></ng-container>`,
 })
-export class ShowcaseComponent {}
+export class ShowcaseComponent implements AfterViewInit {
+  @ViewChild('component', { static: true, read: ViewContainerRef })
+  component!: ViewContainerRef;
+
+  @Input() moduleName!: string;
+
+  async ngAfterViewInit() {
+    const module = await import(
+      `../components/${this.moduleName}/${this.moduleName}.module`
+    );
+    console.log(module);
+  }
+}
