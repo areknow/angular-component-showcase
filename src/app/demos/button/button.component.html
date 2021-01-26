@@ -1,1 +1,6 @@
-<button>{{ text }}</button>
+<h1>Button</h1>
+<ng-container *ngFor="let button of buttons">
+  <button mat-raised-button [color]="button.color" [disabled]="button.disabled">
+    {{ button.label }}
+  </button>
+</ng-container>

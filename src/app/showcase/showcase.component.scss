@@ -9,7 +9,6 @@ $grey: rgb(247, 247, 247);
   border-radius: 10px;
   box-shadow: 0 10px 10px $shadow;
   border: 1px solid $border;
-  height: 500px;
   overflow: hidden;
   .content {
     flex: 1;
@@ -19,11 +18,10 @@ $grey: rgb(247, 247, 247);
     background: #474949;
     flex: 1;
     border-left: 1px solid $border;
-    display: flex;
-    flex-direction: column;
     .section {
-      flex: 1;
+      height: 300px;
       .title {
+        height: 15px;
         color: white;
         padding: 5px;
         background-color: $border;
@@ -31,10 +29,13 @@ $grey: rgb(247, 247, 247);
         font-size: 10px;
       }
       .source {
+        height: 255px;
+        overflow-y: scroll;
         padding: 10px;
         pre {
           margin: 0;
           code {
+            line-height: 1.4;
             padding: 0;
           }
         }
