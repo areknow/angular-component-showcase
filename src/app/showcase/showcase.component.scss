@@ -1,8 +1,9 @@
-$border: rgba(0, 0, 0, 0.15);
+$border: rgba(0, 0, 0, 0.2);
 $shadow: rgba(0, 0, 0, 0.1);
 $grey: rgb(247, 247, 247);
 
 .showcase {
+  background-color: white;
   display: flex;
   margin: 50px;
   border-radius: 10px;
@@ -15,7 +16,7 @@ $grey: rgb(247, 247, 247);
     padding: 20px;
   }
   .side-bar {
-    background: $grey;
+    background: #474949;
     flex: 1;
     border-left: 1px solid $border;
     display: flex;
@@ -31,6 +32,12 @@ $grey: rgb(247, 247, 247);
       }
       .source {
         padding: 10px;
+        pre {
+          margin: 0;
+          code {
+            padding: 0;
+          }
+        }
       }
     }
   }
