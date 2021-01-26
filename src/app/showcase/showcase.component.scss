@@ -1,0 +1,37 @@
+$border: rgba(0, 0, 0, 0.15);
+
+.showcase {
+  display: flex;
+  margin: 50px;
+  border-radius: 10px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid $border;
+  height: 500px;
+  overflow: hidden;
+  .content {
+    flex: 1;
+    // width: 50%;
+    padding: 20px;
+  }
+  .side-bar {
+    flex: 1;
+    // width: 50%;
+    border-left: 1px solid $border;
+    display: flex;
+    flex-direction: column;
+    .section {
+      flex: 1;
+      &:first-child {
+        border-bottom: 1px solid $border;
+      }
+      .title {
+        padding: 10px;
+        border-bottom: 1px solid $border;
+        background-color: azure;
+      }
+      .source {
+        padding: 10px;
+      }
+    }
+  }
+}
