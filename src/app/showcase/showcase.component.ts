@@ -11,7 +11,7 @@ import {
 
 @Component({
   selector: 'app-showcase',
-  template: `<ng-container #component></ng-container>`,
+  templateUrl: 'showcase.component.html',
 })
 export class ShowcaseComponent implements AfterViewInit {
   @ViewChild('component', { static: true, read: ViewContainerRef })
@@ -55,11 +55,12 @@ export class ShowcaseComponent implements AfterViewInit {
   }
 
   async renderSource() {
+    // Load typescript component source code
     const ts = await import(
       `!!raw-loader!../demos/${this.featureName}/${this.featureName}.component.ts`
     );
-    this.ts = ts.default.substring(ts.default.indexOf('@Component'));
-
+    this.ts = ts.default.substring(ts.default.indexOf('export class'));
+    // Load angular template source code
     const html = await import(
       `!!raw-loader!../demos/${this.featureName}/${this.featureName}.component.html`
     );
