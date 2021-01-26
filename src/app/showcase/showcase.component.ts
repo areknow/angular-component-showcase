@@ -1,6 +1,9 @@
 import {
   AfterViewInit,
+  Compiler,
   Component,
+  ComponentFactory,
+  Injector,
   Input,
   ViewChild,
   ViewContainerRef,
@@ -14,12 +17,36 @@ export class ShowcaseComponent implements AfterViewInit {
   @ViewChild('component', { static: true, read: ViewContainerRef })
   component!: ViewContainerRef;
 
-  @Input() moduleName!: string;
+  @Input() featureName!: string;
 
-  async ngAfterViewInit() {
+  constructor(private compiler: Compiler, private injector: Injector) {}
+
+  ngAfterViewInit() {
+    this.renderComponent();
+  }
+
+  async renderComponent() {
+    // Import feature module
     const module = await import(
-      `../components/${this.moduleName}/${this.moduleName}.module`
+      `../components/${this.featureName}/${this.featureName}.module`
     );
-    console.log(module);
+    // Get module name
+    const [, moduleName] = Object.getOwnPropertyNames(module);
+    // Compile module and component
+    const compiled = await this.compiler.compileModuleAndAllComponentsAsync(
+      module[moduleName]
+    );
+    // Build module module factory
+    const moduleRef = compiled.ngModuleFactory.create(this.injector);
+    // Build component factory
+    const [factory] = compiled.componentFactories;
+    // Create and inject component
+    this.component.createComponent(
+      factory as ComponentFactory<any>,
+      undefined,
+      this.injector,
+      undefined,
+      moduleRef
+    );
   }
 }
