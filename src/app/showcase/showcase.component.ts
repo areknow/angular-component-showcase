@@ -19,8 +19,8 @@ export class ShowcaseComponent implements AfterViewInit {
 
   @Input() featureName!: string;
 
-  ts!: string;
-  html!: string;
+  typescript!: string;
+  template!: string;
 
   constructor(private compiler: Compiler, private injector: Injector) {}
 
@@ -56,14 +56,16 @@ export class ShowcaseComponent implements AfterViewInit {
 
   async renderSource() {
     // Load typescript component source code
-    const ts = await import(
+    const typescriptSource = await import(
       `!!raw-loader!../demos/${this.featureName}/${this.featureName}.component.ts`
     );
-    this.ts = ts.default.substring(ts.default.indexOf('export class'));
+    this.typescript = typescriptSource.default.substring(
+      typescriptSource.default.indexOf('export class')
+    );
     // Load angular template source code
-    const html = await import(
+    const templateSource = await import(
       `!!raw-loader!../demos/${this.featureName}/${this.featureName}.component.html`
     );
-    this.html = html.default;
+    this.template = templateSource.default;
   }
 }
