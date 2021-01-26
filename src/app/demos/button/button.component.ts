@@ -2,6 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-button',
-  template: `<button><ng-content></ng-content></button>`,
+  templateUrl: 'button.component.html',
 })
 export class ButtonComponent {}

@@ -19,16 +19,20 @@ export class ShowcaseComponent implements AfterViewInit {
 
   @Input() featureName!: string;
 
+  ts!: string;
+  html!: string;
+
   constructor(private compiler: Compiler, private injector: Injector) {}
 
   ngAfterViewInit() {
     this.renderComponent();
+    this.renderSource();
   }
 
   async renderComponent() {
     // Import feature module
     const module = await import(
-      `../components/${this.featureName}/${this.featureName}.module`
+      `../demos/${this.featureName}/${this.featureName}.module`
     );
     // Get module name
     const [, moduleName] = Object.getOwnPropertyNames(module);
@@ -36,9 +40,9 @@ export class ShowcaseComponent implements AfterViewInit {
     const compiled = await this.compiler.compileModuleAndAllComponentsAsync(
       module[moduleName]
     );
-    // Build module module factory
+    // Get module factory reference
     const moduleRef = compiled.ngModuleFactory.create(this.injector);
-    // Build component factory
+    // Get component factory
     const [factory] = compiled.componentFactories;
     // Create and inject component
     this.component.createComponent(
@@ -48,5 +52,17 @@ export class ShowcaseComponent implements AfterViewInit {
       undefined,
       moduleRef
     );
+  }
+
+  async renderSource() {
+    const ts = await import(
+      `!!raw-loader!../demos/${this.featureName}/${this.featureName}.component.ts`
+    );
+    this.ts = ts.default.substring(ts.default.indexOf('@Component'));
+
+    const html = await import(
+      `!!raw-loader!../demos/${this.featureName}/${this.featureName}.component.html`
+    );
+    this.html = html.default;
   }
 }
