@@ -15,22 +15,19 @@ $grey: rgb(247, 247, 247);
     padding: 20px;
   }
   .side-bar {
+    background: $grey;
     flex: 1;
     border-left: 1px solid $border;
     display: flex;
     flex-direction: column;
     .section {
       flex: 1;
-      &:first-child {
-        border-bottom: 1px solid $border;
-      }
       .title {
-        padding: 10px;
-        border-bottom: 1px solid $border;
-        background-color: $grey;
+        color: white;
+        padding: 5px;
+        background-color: $border;
         text-transform: uppercase;
         font-size: 10px;
-        color: grey;
       }
       .source {
         padding: 10px;
