@@ -1,0 +1,21 @@
+$shadow: rgba(0, 0, 0, 0.4);
+
+nav {
+  background-color: black;
+  color: white;
+  box-shadow: 0 10px 10px $shadow;
+  ul {
+    margin: 0;
+    padding: 0 50px;
+    display: flex;
+    li {
+      list-style: none;
+      padding: 10px;
+      cursor: pointer;
+      &:hover {
+        background-color: rgb(51, 51, 51);
+        user-select: none;
+      }
+    }
+  }
+}

@@ -1,10 +1,10 @@
 import {
-  AfterViewInit,
   Compiler,
   Component,
   ComponentFactory,
   Injector,
   Input,
+  OnChanges,
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
@@ -14,7 +14,7 @@ import {
   templateUrl: 'showcase.component.html',
   styleUrls: ['showcase.component.scss'],
 })
-export class ShowcaseComponent implements AfterViewInit {
+export class ShowcaseComponent implements OnChanges {
   @ViewChild('component', { static: true, read: ViewContainerRef })
   component!: ViewContainerRef;
 
@@ -25,7 +25,8 @@ export class ShowcaseComponent implements AfterViewInit {
 
   constructor(private compiler: Compiler, private injector: Injector) {}
 
-  ngAfterViewInit() {
+  ngOnChanges() {
+    this.component.clear();
     this.renderComponent();
     this.renderSource();
   }
@@ -33,7 +34,7 @@ export class ShowcaseComponent implements AfterViewInit {
   async renderComponent() {
     // Import feature module
     const module = await import(
-      `../demos/${this.demoName}/${this.demoName}.module`
+      `../../../demos/${this.demoName}/${this.demoName}.module`
     );
     // Generate names
     const moduleName = `${capitalize(this.demoName)}Module`;
@@ -61,14 +62,14 @@ export class ShowcaseComponent implements AfterViewInit {
   async renderSource() {
     // Load component typescript source code
     const typescriptSource = await import(
-      `!!raw-loader!../demos/${this.demoName}/${this.demoName}.component.ts`
+      `!!raw-loader!../../../demos/${this.demoName}/${this.demoName}.component.ts`
     );
     this.typescript = typescriptSource.default.substring(
       typescriptSource.default.indexOf('export class')
     );
     // Load component template source code
     const templateSource = await import(
-      `!!raw-loader!../demos/${this.demoName}/${this.demoName}.component.html`
+      `!!raw-loader!../../../demos/${this.demoName}/${this.demoName}.component.html`
     );
     this.template = templateSource.default;
   }
