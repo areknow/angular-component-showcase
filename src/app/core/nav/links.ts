@@ -1,1 +1,1 @@
-export const LINKS = ['button', 'autocomplete'];
+export const LINKS = ['button', 'autocomplete', 'badge'];
