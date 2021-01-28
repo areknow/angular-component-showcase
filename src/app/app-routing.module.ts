@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { Router, RouterModule, Routes } from '@angular/router';
+import { DEMOS } from './demos';
 
 const routes: Routes = [
   {
@@ -8,22 +8,20 @@ const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'autocomplete',
   },
-  {
-    path: 'autocomplete',
-    component: HomeComponent,
-  },
-  {
-    path: 'button',
-    component: HomeComponent,
-  },
-  {
-    path: 'badge',
-    component: HomeComponent,
-  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+  constructor(private router: Router) {
+    DEMOS.forEach((item) => {
+      this.router.config.push({
+        path: item,
+        loadChildren: () =>
+          import('./home/home.module').then((m) => m.HomeModule),
+      });
+    });
+  }
+}

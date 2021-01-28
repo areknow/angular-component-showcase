@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LINKS } from './links';
+import { DEMOS } from 'src/app/demos';
 
 @Component({
   selector: 'app-nav',
@@ -7,5 +7,5 @@ import { LINKS } from './links';
   styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent {
-  links = LINKS.sort(); // auto generate these
+  links = DEMOS.sort();
 }

@@ -8,6 +8,7 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
+import { capitalize } from '../../utils/captitalize';
 
 @Component({
   selector: 'app-showcase',
@@ -74,7 +75,3 @@ export class ShowcaseComponent implements OnChanges {
     this.template = templateSource.default;
   }
 }
-
-const capitalize = (string: string) => {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-};
