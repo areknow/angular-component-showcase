@@ -1,1 +1,1 @@
-export const DEMOS = ['button', 'autocomplete', 'badge'];
+export const DEMOS = ['button', 'autocomplete', 'badge', 'bottomsheet'];
