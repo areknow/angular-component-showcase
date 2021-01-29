@@ -65,7 +65,7 @@ export class ShowcaseComponent implements OnChanges {
     );
     // Create and inject component
     this.component.createComponent(
-      factory as ComponentFactory<typeof componentName>,
+      factory as ComponentFactory<any>,
       undefined,
       this.injector,
       undefined,
