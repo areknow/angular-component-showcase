@@ -6,7 +6,7 @@ $grey: rgb(247, 247, 247);
   background-color: white;
   display: flex;
   margin: 50px;
-  border-radius: 10px;
+  border-radius: 8px;
   box-shadow: 0 10px 10px $shadow;
   border: 1px solid $border;
   overflow: hidden;
@@ -20,6 +20,17 @@ $grey: rgb(247, 247, 247);
     border-left: 1px solid $border;
     .section {
       height: 300px;
+      overflow: hidden;
+      transition: height 0.2s ease-in;
+      &.expanded {
+        height: 575px;
+        .source {
+          height: 530px;
+        }
+      }
+      &.collapsed {
+        height: 25px;
+      }
       .title {
         height: 15px;
         color: rgba(255, 255, 255, 0.575);
@@ -27,6 +38,7 @@ $grey: rgb(247, 247, 247);
         background-color: $border;
         text-transform: uppercase;
         font-size: 10px;
+        cursor: pointer;
       }
       .source {
         &::-webkit-scrollbar {
@@ -48,15 +60,13 @@ $grey: rgb(247, 247, 247);
           code {
             line-height: 1.4;
             padding: 0;
+            ::ng-deep .hljs-ln-numbers {
+              padding-right: 20px;
+              opacity: 0.3;
+            }
           }
         }
       }
     }
-    // .ts {
-    //   height: 575px;
-    // }
-    // .html {
-    //   height: 25px;
-    // }
   }
 }

@@ -22,6 +22,7 @@ import { CoreModule } from './core/core.module';
       provide: HIGHLIGHT_OPTIONS,
       useValue: {
         fullLibraryLoader: () => import('highlight.js'),
+        lineNumbersLoader: () => import('highlightjs-line-numbers.js'),
       },
     },
   ],

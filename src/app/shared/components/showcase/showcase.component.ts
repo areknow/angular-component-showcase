@@ -8,7 +8,7 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { capitalize } from '../../utils/captitalize';
+import { capitalize } from '../../utils/capitalize';
 
 @Component({
   selector: 'app-showcase',
@@ -23,6 +23,10 @@ export class ShowcaseComponent implements OnChanges {
 
   typescript!: string;
   template!: string;
+
+  expanded = false;
+  tsExpanded = false;
+  templateExpanded = false;
 
   constructor(private compiler: Compiler, private injector: Injector) {}
 
@@ -73,5 +77,37 @@ export class ShowcaseComponent implements OnChanges {
       `!!raw-loader!../../../demos/${this.demoName}/${this.demoName}.component.html`
     );
     this.template = templateSource.default;
+  }
+
+  titleClick(selectedTitle: string): void {
+    if (!this.expanded) {
+      this.expanded = true;
+      switch (selectedTitle) {
+        case 'typescript':
+          this.tsExpanded = true;
+          this.templateExpanded = false;
+          break;
+        case 'html':
+          this.tsExpanded = false;
+          this.templateExpanded = true;
+          break;
+      }
+    } else {
+      this.expanded = true;
+      if (selectedTitle === 'typescript' && !this.tsExpanded) {
+        this.tsExpanded = true;
+        this.templateExpanded = false;
+      }
+      if (selectedTitle === 'html' && !this.templateExpanded) {
+        this.tsExpanded = false;
+        this.templateExpanded = true;
+      }
+      if (
+        (selectedTitle === 'html' && this.templateExpanded) ||
+        (selectedTitle === 'typescript' && this.tsExpanded)
+      ) {
+        this.expanded = false;
+      }
+    }
   }
 }
