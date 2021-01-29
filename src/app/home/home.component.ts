@@ -10,6 +10,5 @@ export class HomeComponent {
 
   constructor(private router: Router) {
     this.demo = this.router.url.split('/')[1];
-    console.log(this.demo);
   }
 }

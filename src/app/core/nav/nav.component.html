@@ -1,7 +1,7 @@
 <nav>
   <ul>
     <li *ngFor="let link of links">
-      <a [routerLink]="['/', link]">{{ link | titlecase }}</a>
+      <a [routerLink]="['/', link.key]">{{ link.label }}</a>
     </li>
   </ul>
 </nav>

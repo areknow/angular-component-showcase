@@ -8,6 +8,7 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { capitalize } from '../../utils/capitalize';
 
 @Component({
@@ -28,7 +29,15 @@ export class ShowcaseComponent implements OnChanges {
   tsExpanded = false;
   templateExpanded = false;
 
-  constructor(private compiler: Compiler, private injector: Injector) {}
+  demoLabel!: string;
+
+  constructor(
+    private compiler: Compiler,
+    private injector: Injector,
+    private route: ActivatedRoute
+  ) {
+    this.demoLabel = this.route.snapshot.data['label'];
+  }
 
   ngOnChanges() {
     this.component.clear();

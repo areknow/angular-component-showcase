@@ -18,9 +18,10 @@ export class AppRoutingModule {
   constructor(private router: Router) {
     DEMOS.forEach((item) => {
       this.router.config.push({
-        path: item,
+        path: item.key,
         loadChildren: () =>
           import('./home/home.module').then((m) => m.HomeModule),
+        data: { label: item.label },
       });
     });
   }
