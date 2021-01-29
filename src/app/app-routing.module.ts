@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'autocomplete',
+    redirectTo: DEMOS[0].key,
   },
 ];
 
