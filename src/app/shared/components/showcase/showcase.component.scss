@@ -1,6 +1,13 @@
 $border: rgba(0, 0, 0, 0.2);
 $shadow: rgba(0, 0, 0, 0.1);
 $grey: rgb(247, 247, 247);
+$viewport: 100vh;
+$vertical-margin: 100px;
+$border-width: 2px;
+$nav-bar-height: 44px;
+$offset: calc(
+  #{$viewport} - #{$vertical-margin} - #{$border-width} - #{$nav-bar-height}
+);
 
 .showcase {
   background-color: white;
@@ -19,13 +26,13 @@ $grey: rgb(247, 247, 247);
     flex: 1;
     border-left: 1px solid $border;
     .section {
-      height: 300px;
+      height: calc((#{$offset}) / 2);
       overflow: hidden;
       transition: height 0.2s ease-in;
       &.expanded {
-        height: 575px;
+        height: calc((#{$offset}) - 25px);
         .source {
-          height: 530px;
+          height: calc((#{$offset}) - 70px);
         }
       }
       &.collapsed {
@@ -41,20 +48,11 @@ $grey: rgb(247, 247, 247);
         cursor: pointer;
       }
       .source {
-        &::-webkit-scrollbar {
-          width: 6px;
-        }
-        &::-webkit-scrollbar-thumb {
-          background: #888;
-          border-radius: 4px;
-        }
-        &::-webkit-scrollbar-thumb:hover {
-          background: rgb(179, 179, 179);
-          border-radius: 4px;
-        }
-        height: 255px;
+        height: calc(((#{$offset}) / 2) - 45px);
         overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
         padding: 10px;
+        transition: height 0.2s ease-in;
         pre {
           margin: 0;
           code {
@@ -65,6 +63,17 @@ $grey: rgb(247, 247, 247);
               opacity: 0.3;
             }
           }
+        }
+        &::-webkit-scrollbar {
+          width: 6px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background: #888;
+          border-radius: 4px;
+        }
+        &::-webkit-scrollbar-thumb:hover {
+          background: rgb(179, 179, 179);
+          border-radius: 4px;
         }
       }
     }
