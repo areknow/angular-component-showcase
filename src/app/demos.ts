@@ -7,4 +7,5 @@ export const DEMOS = [
   { key: 'checkbox', label: 'Checkbox' },
   { key: 'chip', label: 'Chips' },
   { key: 'datepicker', label: 'Date Picker' },
+  { key: 'dialog', label: 'Dialog' },
 ];
