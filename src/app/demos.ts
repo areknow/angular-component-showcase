@@ -5,4 +5,5 @@ export const DEMOS = [
   { key: 'bottomsheet', label: 'Bottom Sheet' },
   { key: 'buttontoggle', label: 'Button Toggle' },
   { key: 'checkbox', label: 'Checkbox' },
+  { key: 'chip', label: 'Chips' },
 ];
