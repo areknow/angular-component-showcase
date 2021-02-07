@@ -8,7 +8,18 @@ nav {
     margin: 0;
     padding: 0 50px;
     display: flex;
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+      height: 0;
+    }
+    &::-webkit-scrollbar-track {
+      height: 0;
+    }
+    &::-webkit-scrollbar-thumb {
+      height: 0;
+    }
     li {
+      flex-shrink: 0;
       list-style: none;
       padding: 10px 20px;
       cursor: pointer;
