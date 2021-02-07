@@ -119,4 +119,18 @@ export class ShowcaseComponent implements OnChanges {
       }
     }
   }
+
+  copy(event: Event, type: string): void {
+    event.stopPropagation();
+    let buffer: string;
+    switch (type) {
+      case 'typescript':
+        buffer = this.typescript;
+        break;
+      case 'html':
+        buffer = this.template;
+        break;
+    }
+    navigator.clipboard.writeText(buffer);
+  }
 }
