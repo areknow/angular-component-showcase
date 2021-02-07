@@ -12,4 +12,5 @@ export const DEMOS = [
   { key: 'select', label: 'Select' },
   { key: 'snackbar', label: 'Snack Bar' },
   { key: 'stepper', label: 'Stepper' },
+  { key: 'table', label: 'Table' },
 ];
