@@ -13,4 +13,5 @@ export const DEMOS = [
   { key: 'snackbar', label: 'Snack Bar' },
   { key: 'stepper', label: 'Stepper' },
   { key: 'table', label: 'Table' },
+  { key: 'toolbar', label: 'Toolbar' },
 ];
