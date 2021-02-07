@@ -10,4 +10,5 @@ export const DEMOS = [
   { key: 'dialog', label: 'Dialog' },
   { key: 'expansionpanel', label: 'Expansion Panel' },
   { key: 'select', label: 'Select' },
+  { key: 'snackbar', label: 'Snack Bar' },
 ];
