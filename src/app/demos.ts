@@ -8,4 +8,5 @@ export const DEMOS = [
   { key: 'chip', label: 'Chips' },
   { key: 'datepicker', label: 'Date Picker' },
   { key: 'dialog', label: 'Dialog' },
+  { key: 'expansionpanel', label: 'Expansion Panel' },
 ];
