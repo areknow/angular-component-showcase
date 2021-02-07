@@ -3,7 +3,13 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   templateUrl: 'datepicker.component.html',
-  styles: [],
+  styles: [
+    `
+      mat-form-field {
+        margin-right: 12px;
+      }
+    `,
+  ],
 })
 export class DatepickerComponent {
   campaignOne: FormGroup;
