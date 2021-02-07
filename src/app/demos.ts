@@ -9,4 +9,5 @@ export const DEMOS = [
   { key: 'datepicker', label: 'Date Picker' },
   { key: 'dialog', label: 'Dialog' },
   { key: 'expansionpanel', label: 'Expansion Panel' },
+  { key: 'select', label: 'Select' },
 ];
