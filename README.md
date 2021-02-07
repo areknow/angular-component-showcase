@@ -1,27 +1,12 @@
-# AngularComponentShowcase
+# Angular Component Showcase
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.1.
+The purpose of this project is to demonstrate how to setup a local component showcase system capable of rendering a live dynamic component alongside its source code. This example also includes the ability to copy the source code directly from the demo page.
+[Live demo](https://angular-component-showcase.netlify.app).
 
-## Development server
+![readme-screenshot](./readme-screenshot.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+For this example, the Material Angular components are used, but any component can be showcased in their place. This would be especially useful for a mono-repo with many small shared components that a team needs to be aware of.
 
-## Code scaffolding
+## Problem solved
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+This solves the problem of having to maintain the component demo along with separate string representations of that components source code which are then displayed. Instead, in this way the component is rendered and the source code is automatically parsed and displayed alongside it.
